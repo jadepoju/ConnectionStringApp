@@ -31,9 +31,10 @@ namespace ConnectionStringApp
         {
             services.AddControllers();
 
-            //DBContext service registration
+            //DBContext service registration for connection string - Approach 1
             services.AddDbContext<ProductContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("ProductConnectionString")));
 
+            //DBContext service registration for connection string - Approach 2
             var connectionString = Configuration["ConnectionStrings:DevConnectionString"];
             services.AddDbContext<ProductContext>(opt => opt.UseSqlServer(connectionString));
 
